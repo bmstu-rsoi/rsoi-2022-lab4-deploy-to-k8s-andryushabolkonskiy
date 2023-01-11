@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "baseUrl",
-			"value": "http://gateway.andryushabolkonskiy.cloud.okteto.net",
+			"value": "http://app.andryushabolkonskiy.cloud.okteto.net",
 			"enabled": true
 		}
 	],
