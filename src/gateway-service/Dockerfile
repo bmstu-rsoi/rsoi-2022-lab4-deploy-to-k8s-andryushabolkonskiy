@@ -1,7 +1,7 @@
 FROM python:3.9
-COPY . /gateway-service
-COPY requirements.txt /gateway-service
-WORKDIR /gateway-service
-RUN pip install -r requirements.txt
+COPY main.py /app/
+COPY requirements.txt /app/
+WORKDIR /app
 EXPOSE 8080
-CMD ["python3", "gateway-service.py"]
+RUN pip install -r requirements.txt
+CMD ["python3", "/app/main.py"]

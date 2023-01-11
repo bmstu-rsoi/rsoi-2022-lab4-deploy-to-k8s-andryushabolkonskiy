@@ -1,7 +1,8 @@
 FROM python:3.9
-COPY . /ticket-service
-COPY requirements.txt /ticket-service
-WORKDIR /ticket-service
+COPY main.py /app/
+COPY database.py /app/
+COPY requirements.txt /app/
+WORKDIR /app
+EXPOSE 8070
 RUN pip install -r requirements.txt
-EXPOSE 8060
-CMD ["python3", "ticket-service.py"]
+CMD ["python3", "/app/main.py"]
