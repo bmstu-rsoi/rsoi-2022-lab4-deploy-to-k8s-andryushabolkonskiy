@@ -2,6 +2,9 @@ name: GitHub Classroom Workflow
 on:
   push:
     branches: [ master ]
+env:
+  OKTETO_SERVER: ${{ secrets.OKTETO_SERVER }}
+  OKTETO_TOKEN: ${{ secrets.OKTETO_TOKEN }}
 jobs:
   build:
     name: Autograding
@@ -34,13 +37,21 @@ jobs:
           docker push andryushabolkonskiy/rsoi-lab4:flight
           docker push andryushabolkonskiy/rsoi-lab4:ticket
           docker push andryushabolkonskiy/rsoi-lab4:gateway
-          sleep 30
+
+      - name: Deploy to Okteto
+        run: |
+          kubectl config set-cluster flight-service-cluster --server="$OKTETO_SERVER" --insecure-skip-tls-verify=true
+          kubectl config set-credentials cloud_okteto_com-user --token="$OKTETO_TOKEN"
+          kubectl config set-context default --cluster=flight-service-cluster --user=cloud_okteto_com-user --namespace="andryushabolkonskiy"
+          kubectl config use-context default
+          cd k8s && helm delete services && helm install services ./services-chart
+          sleep 60
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
         with:
-          collection: <variant>/postman/collection.json
-          environment: <variant>/postman/environment.json
+          collection: v1/postman/collection.json
+          environment: v1/postman/environment.json
           delayRequest: 100
           reporters: '[ "cli" ]'
 
