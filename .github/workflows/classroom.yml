@@ -23,10 +23,10 @@ jobs:
       
       - name: Build docker images
         run: |
-          docker build ./src/bonus/ -t andryushabolkonskiy/rsoi-lab4:bonus
-          docker build ./src/flight/ -t andryushabolkonskiy/rsoi-lab4:flight
-          docker build ./src/gateway/ -t andryushabolkonskiy/rsoi-lab4:gateway
-          docker build ./src/ticket/ -t andryushabolkonskiy/rsoi-lab4:ticket
+          docker build ./src/bonus-service/ -t andryushabolkonskiy/rsoi-lab4:bonus
+          docker build ./src/flight-service/ -t andryushabolkonskiy/rsoi-lab4:flight
+          docker build ./src/gateway-service/ -t andryushabolkonskiy/rsoi-lab4:gateway
+          docker build ./src/ticket-service/ -t andryushabolkonskiy/rsoi-lab4:ticket
 
       - name: Push docker images
         run: |
