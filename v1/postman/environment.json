@@ -3,7 +3,7 @@
 	"name": "[rsoi][lab4] Flight Service",
 	"values": [
 		{
-			"key": "baseUrl",
+			"key": "http://gateway.andryushabolkonskiy.cloud.okteto.net",
 			"value": "",
 			"enabled": true
 		}
