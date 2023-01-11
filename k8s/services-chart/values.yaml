@@ -1,0 +1,32 @@
+domain: andryushabolkonskiy.cloud.okteto.net
+gateway:
+  name: gateway
+  repo: andryushabolkonskiy/andryushabolkonskiyrep:gateway
+  port: 8080
+ticket:
+  name: ticket
+  repo: andryushabolkonskiy/andryushabolkonskiyrep:ticket
+  port: 8070
+bonus:
+  name: bonus
+  repo: andryushabolkonskiy/andryushabolkonskiyrep:bonus
+  port: 8050
+flight:
+  name: flight
+  repo: andryushabolkonskiy/andryushabolkonskiyrep:flight
+  port: 8060
+postgres:
+  name: postgres
+  repo: library/postgres:13
+  port: 5432
+  default_database:
+    name: postgres
+    user: postgres
+    password: postgres
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 200m
+      memory: 1024Mi
